@@ -22,7 +22,7 @@ RUN go build -a -installsuffix cgo -ldflags="-w -s" -o /go/bin/spawnersvc
 WORKDIR /spawnerservice/cmd/spawnercli
 
 
-FROM alpine  
+FROM alpine:3.17.3  
 COPY config.env ./
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt 
 COPY --from=builder /go/bin/spawnersvc /go/bin/spawnersvc
